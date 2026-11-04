@@ -138,5 +138,51 @@ for movie in movies:
     )
 
 
+
+# ****************************** Этап 3 **********************************
+
+def count_long_movies(movies, threshold=120):
+    count = 0
+    for movie in movies:
+        if movie["duration_min"] > threshold:
+            count += 1
+    return count
+
+
+print()
+print("Фильмы с жанром НЕ comedy:")
+for movie in movies:
+    if "comedy" in movie["genres"]:
+        continue
+    print(movie["title"])
+
+print()
+print("Поиск первого фильма с рейтингом выше 9.0:")
+i = 0
+while i < len(movies):
+    if movies[i]["rating"] > 9.0:
+        print(
+            f"Найден фильм: {movies[i]['title']}, "
+            f"рейтинг: {movies[i]['rating']}"
+        )
+        break
+    i += 1
+else:
+    print("Шедевров не найдено")
+
+
+print()
+print(
+    "Количество фильмов длиннее 120 минут:",
+    count_long_movies(movies)
+)
+
+
+
+
+
+
+
+
 #if __name__ == '__main__':
 #   print_hi('PyCharm')
