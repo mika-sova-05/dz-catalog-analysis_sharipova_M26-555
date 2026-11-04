@@ -227,6 +227,44 @@ for movie in movies:
 
 
 
+# ****************************** Этап 5 **********************************
+
+def titles_sorted_by_rating(movies):
+    sorted_movies = sorted(
+        movies,
+        key=lambda movie: movie["rating"],
+        reverse=True
+    )
+
+    return [movie["title"] for movie in sorted_movies]
+
+
+def top_n_by_rating(movies, n=3):
+    sorted_movies = sorted(
+        movies,
+        key=lambda movie: movie["rating"],
+        reverse=True
+    )
+
+    return [
+        (movie["title"], movie["rating"])
+        for movie in sorted_movies[:n]
+    ]
+
+
+# ************************ Проверка этапа 5 ****************************
+print()
+print("Названия фильмов по убыванию рейтинга:")
+for title in titles_sorted_by_rating(movies):
+    print(title)
+
+print()
+print("Топ-3 фильма по рейтингу:")
+for item in top_n_by_rating(movies, 3):
+    print(item)
+
+
+
 
 #if __name__ == '__main__':
 #   print_hi('PyCharm')
