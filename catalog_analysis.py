@@ -97,6 +97,46 @@ print(duration_in_hours(movies[0]["duration_min"]))
 
 
 
+# ****************************** Этап 2 **********************************
+
+def rating_tier(rating):
+    if rating >= 9:
+        return "шедевр"
+    elif rating >= 7:
+        return "хорошо" if rating < 9 else "шедевр"
+    elif rating >= 5:
+        return "средне"
+    else:
+        return "слабо"
+
+
+def decade_label(year):
+    match year:
+        case _ if year > 2020:
+            return "новые"
+        case _ if 2015 <= year <= 2020:
+            return "недавние"
+        case _:
+            return "старые"
+
+
+# ************************ Проверка этапа 2 ****************************
+print()
+print("Категории рейтингов фильмов:")
+for movie in movies:
+    print(
+        f"{movie['title']}: "
+        f"рейтинг {movie['rating']} — {rating_tier(movie['rating'])}"
+    )
+
+print()
+print("Категории фильмов по году выпуска:")
+for movie in movies:
+    print(
+        f"{movie['title']}: "
+        f"{movie['year']} — {decade_label(movie['year'])}"
+    )
+
+
 #if __name__ == '__main__':
 #   print_hi('PyCharm')
-
