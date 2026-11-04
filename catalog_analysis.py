@@ -179,7 +179,51 @@ print(
 
 
 
+# ****************************** Этап 4 **********************************
 
+def normalize_title(title):
+    words = title.split()
+    normalized_words = []
+
+    for word in words:
+        normalized_word = word[0].upper() + word[1:]
+        normalized_words.append(normalized_word)
+
+    return " ".join(normalized_words)
+
+
+def make_slug(title):
+    return normalize_title(title).lower().replace(" ", "-")
+
+
+def format_report_line(movie):
+    title = normalize_title(movie["title"])
+    year = movie["year"]
+    rating = movie["rating"]
+    duration = duration_in_hours(movie["duration_min"])
+    genres = ", ".join(sorted(movie["genres"]))
+
+    return (
+        f'"{title}" ({year}) — {rating}/10, '
+        f'{duration}, жанры: {genres}'
+    )
+
+
+# ************************ Проверка этапа 4 ****************************
+print()
+print("Нормализованные названия фильмов:")
+for movie in movies:
+    print(normalize_title(movie["title"]))
+
+print()
+print("Слаг названий фильмов:")
+for movie in movies:
+    print(make_slug(movie["title"]))
+
+print()
+print("Отчет по фильмам:")
+for movie in movies:
+    print(format_report_line(movie))
 
 
 
