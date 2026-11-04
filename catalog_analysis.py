@@ -345,6 +345,37 @@ print("Жанры, встречающиеся только в первом на�
 print(genres_only_in_one(movies[5:6], movies[:5]))
 
 
+# ****************************** Этап 8 **********************************
+
+def iter_high_rated(movies, min_rating=8.0):
+    for movie in movies:
+        if movie["rating"] >= min_rating:
+            yield movie
+
+
+
+# ************************ Проверка этапа 8 ****************************
+print()
+print("Фильмы с рейтингом не ниже установленного")
+for movie in iter_high_rated(movies):
+    print(format_report_line(movie))
+
+print()
+print("Суммарная длительность фильмов с рейтингом выше 7:")
+
+total_duration = sum(
+    movie["duration_min"] for movie in movies if movie["rating"] > 7
+)
+
+print(total_duration, "минут")
+
+
+
+
+
+
+
+
 
 #if __name__ == '__main__':
 #   print_hi('PyCharm')
