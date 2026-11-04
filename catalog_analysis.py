@@ -264,6 +264,56 @@ for item in top_n_by_rating(movies, 3):
     print(item)
 
 
+# ****************************** Этап 6 **********************************
+
+def count_by_genre(movies):
+    genre_counts = {}
+
+    for movie in movies:
+        for genre in movie["genres"]:
+            genre_counts[genre] = genre_counts.get(genre, 0) + 1
+
+    return genre_counts
+
+
+def actor_filmography(movies):
+    filmography = {}
+
+    for movie in movies:
+        for actor in movie["actors"]:
+            filmography[actor] = filmography.get(actor, [])
+            filmography[actor].append(movie["title"])
+
+    return filmography
+
+
+def above_average_movies(movies):
+    average = average_rating(movies)
+
+    return {
+        movie["title"]: movie["rating"]
+        for movie in movies
+        if movie["rating"] > average
+    }
+
+
+# ************************ Проверка этапа 6 ****************************
+print()
+print("Количество фильмов по жанрам:")
+print(count_by_genre(movies))
+
+print()
+print("Фильмография актёров:")
+print(actor_filmography(movies))
+
+print()
+print("Фильмы с рейтингом выше среднего:")
+print(above_average_movies(movies))
+
+
+
+
+
 
 
 #if __name__ == '__main__':
