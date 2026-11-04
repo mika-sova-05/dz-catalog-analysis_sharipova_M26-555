@@ -370,12 +370,54 @@ total_duration = sum(
 print(total_duration, "минут")
 
 
+# ****************************** Этап 9 **********************************
+
+def build_report(movies):
+    print()
+    print("Единый консольный отчет", '\n')
+
+    # Общая статистика
+    print(f"Средний рейтинг: {average_rating(movies)}")
+
+    average_age = catalog_age_stats(movies)[2]
+    print(f"Средний возраст фильмов: {average_age} лет")
+
+    # Топ-3 фильма
+    print()
+    print("Топ-3 фильма:")
+
+    top_movies = top_n_by_rating(movies, 3)
+
+    for title, rating in top_movies:
+        movie = next(
+            movie for movie in movies
+            if movie["title"] == title
+        )
+        print(f"  {format_report_line(movie)}")
+
+    # Количество фильмов по жанрам
+    print()
+    print("Фильмов по жанрам:")
+
+    genre_counts = count_by_genre(movies)
+
+    sorted_genres = sorted(
+        genre_counts.items(),
+        key=lambda item: (-item[1], item[0])
+    )
+
+    for genre, count in sorted_genres:
+        print(f"  {genre} — {count}")
+
+    # Все уникальные жанры
+    print()
+    genres = sorted(all_genres(movies))
+    print(f"Все жанры каталога: {', '.join(genres)}")
 
 
+# ************************ Запуск отчета ************************
+
+if __name__ == "__main__":
+    build_report(movies)
 
 
-
-
-
-#if __name__ == '__main__':
-#   print_hi('PyCharm')
