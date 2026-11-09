@@ -1,16 +1,13 @@
 [project]
 name = "catalog-analysis"
 version = "0.1.0"
-description = "Add your description here"
+description = "Анализ каталога фильмов стримингового сервиса с использованием базовых структур данных и возможностей Python."
 readme = "README.md"
 authors = [
     { name = "Mika", email = "mika.sova.05@outlook.com" }
 ]
 requires-python = ">=3.12"
 dependencies = []
-
-[project.scripts]
-catalog-analysis = "catalog_analysis:main"
 
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]
@@ -20,7 +17,6 @@ build-backend = "uv_build"
 dev = [
     "ruff>=0.17.3",
 ]
-
 
 [tool.ruff]
 line-length = 88
